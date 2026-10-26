@@ -75,6 +75,23 @@
     @media (max-width: 640px) {
       .vo-panel { bottom: 4.75rem; border-radius: 1rem; }
     }
+
+    /* ===== AJUSTE MÓVIL: elementos fijos más compactos para no tapar el contenido ===== */
+    @media (max-width: 767px) {
+      header.sticky { position: static !important; }
+    }
+    @media (max-width: 640px) {
+      .vo-panel { left: .5rem; bottom: .5rem; max-width: calc(100vw - 4.5rem); padding: .3rem .4rem; gap: .25rem; border-radius: 9999px; flex-wrap: nowrap; }
+      .vo-title, #vo-voice { display: none; }
+      .vo-btn { width: 30px; height: 30px; font-size: 12px; }
+      .vo-select { padding: .3rem .3rem; font-size: 11px; max-width: 70px; }
+      .vo-status { display: none; }
+      .cc-bar { bottom: 3.6rem; padding: .4rem .7rem; font-size: 13px; line-height: 1.3; max-height: 28vh; overflow: hidden; }
+      #floating-next-btn { padding: 0; width: 44px; height: 44px; justify-content: center; }
+      #floating-btn-text { display: none; }
+      #floating-next-btn + * , #floating-next-btn { margin: 0; }
+      #floating-next-btn { position: fixed; right: .5rem; bottom: .5rem; }
+    }
   </style>
 </head>
 <body class="bg-slate-100 font-sans text-slate-800 flex flex-col min-h-screen">
@@ -93,17 +110,21 @@
   </header>
 
   <!-- BARRA DE INDICACIÓN GENERAL (HEX #00AEAC) -->
-  <div class="bg-custom-banner text-white shadow-inner">
-    <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center space-x-3 text-xs sm:text-sm md:text-base font-medium">
+  <div class="bg-custom-banner text-justify text-white shadow-inner">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center space-x-3 text-xs sm:text-sm md:text-sm font-medium">
       <i class="fa-solid fa-circle-info text-xl shrink-0"></i>
       <p>
-        <strong>Indicación previa al ingreso:</strong>Revise el contenido de todos los módulos de la inducción sobre riesgos y peligros previo al ingreso del Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST) y complete la evaluación que se encuentra al final. Una vez finalizada, tome una captura de pantalla del resultado y cárguela en la plataforma donde está realizando el proceso de contratación.
+        <strong>Indicación previa al ingreso:</strong> Revise el contenido de todos los módulos de la inducción sobre riesgos y peligros previo al ingreso del Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST) y complete la evaluación que se encuentra al final. Una vez finalizada, 
+escargue el comprobante de su participación en la inducción y adjuntela en el link del formulario <strong>"Evidencia - Inducción sobre riesgos y peligros previo al ingreso (SG-SST)"</strong>
+ y <strong>cárguelo en la plataforma en la cual está realizando su proceso de contratación</strong>.
+
+            
       </p>
     </div>
   </div>
 
   <!-- NAVEGACIÓN HORIZONTAL SUPERIOR - MÓDULOS 1 AL 10 -->
-  <nav class="bg-slate-200 border-b border-slate-300 sticky top-[57px] z-40 shadow-sm">
+  <nav class="bg-slate-200 border-b border-slate-300 shadow-sm">
     <div class="max-w-7xl mx-auto px-2 py-3">
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-1.5 text-center text-xs">
         <button onclick="showModule(1)" id="tab-1" class="bg-custom-mod-btn text-slate-900 font-semibold p-2 rounded transition-all hover:opacity-90 leading-tight flex flex-col items-center justify-center min-h-[50px]">
@@ -184,15 +205,15 @@
         <div class="grid md:grid-cols-2 gap-4">
           <div class="p-4 bg-slate-50 border-l-4 border-[#00AEAC] rounded-r">
             <h4 class="font-bold text-slate-900">Ley 1562 de 2012</h4>
-            <p class="text-sm text-justify text-slate-600">Modifica el Sistema General de Riesgos Laborales y redefine la Salud Ocupacional como como Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST).</p>
+            <p class="text-base text-justify text-slate-600">Modifica el Sistema General de Riesgos Laborales y redefine la Salud Ocupacional como como Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST).</p>
           </div>
           <div class="p-4 bg-slate-50 border-l-4 border-[#00AEAC] rounded-r">
             <h4 class="font-bold text-slate-900">Decreto 1072 de 2015</h4>
-            <p class="text-sm text-justify text-slate-600">Decreto Único Reglamentario del Sector Trabajo (Libro 2, Parte 2, Título 4, Cap. 6) compila y regula el Sistema de Gestión de la Seguridad y Salud en el Trabajo (SG-SST) obligatorio para empleadores y contratistas.</p>
+            <p class="text-base text-justify text-slate-600">Decreto Único Reglamentario del Sector Trabajo (Libro 2, Parte 2, Título 4, Cap. 6) compila y regula el Sistema de Gestión de la Seguridad y Salud en el Trabajo (SG-SST) obligatorio para empleadores y contratistas.</p>
           </div>
           <div class="p-4 bg-slate-50 border-l-4 border-[#00AEAC] rounded-r">
             <h4 class="font-bold text-slate-900">Resolución 0312 de 2019</h4>
-            <p class="text-sm text-slate-600">Establece los Estándares Mínimos obligatorios del SG-SST según el tamaño y nivel de riesgo de las empresas.</p>
+            <p class="text-base text-slate-600">Establece los Estándares Mínimos obligatorios del SG-SST según el tamaño y nivel de riesgo de las empresas.</p>
           </div>
         </div>
       </div>
@@ -208,20 +229,20 @@
       <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
         <div class="grid md:grid-cols-2 gap-4">
           <div class="p-4 rounded-lg bg-orange-50 border border-orange-200">
-            <h4 class="font-bold text-orange-900 flex items-center">
+            <h4 class="font-bold text-xl text-orange-900 flex items-center">
               <i class="fa-solid fa-triangle-exclamation mr-2"></i> Peligro
             </h4>
-            <p class="text-sm text-slate-700 mt-1 text-justify">
+            <p class="text-base text-slate-700 mt-1 text-justify">
               Es la fuente, situación o acto con potencial de causar daño a la salud de los trabajadores, en los equipos o en las instalaciones. Decreto 1072 de 2015 Articulo 2.2.4.6.2.
 	     <p class="text-slate-700"><strong><em>Ejemplo: El piso mojado.</em></strong></p>
             </p>
           </div>
 
           <div class="p-4 rounded-lg bg-red-50 border border-red-200">
-            <h4 class="font-bold text-red-900 flex items-center">
+            <h4 class="font-bold text-xl text-red-900 flex items-center">
               <i class="fa-solid fa-triangle-exclamation mr-2"></i> Riesgo
             </h4>
-            <p class="text-sm text-slate-700 mt-1 text-justify">
+            <p class="text-base text-slate-700 mt-1 text-justify">
               Combinación de la probabilidad de que ocurra una o más exposiciones o eventos peligroso y la severidad del daño que puede ser causado por estos.
 	      Decreto 1072 de 2015 Articulo 2.2.4.6.2.
 	    <p class="text-slate-700"><strong><em>Ejemplo: Caída por pisar el piso mojado.</em></strong></p>
@@ -229,20 +250,20 @@
           </div>
 
           <div class="p-4 rounded-lg bg-orange-50 border border-orange-200">
-            <h4 class="font-bold text-orange-900 flex items-center">
+            <h4 class="font-bold text-xl text-orange-900 flex items-center">
               <i class="fa-solid fa-circle-radiation mr-2"></i> Condición insegura
             </h4>
-            <p class="text-sm text-slate-700 mt-1 text-justify">
+            <p class="text-base text-slate-700 mt-1 text-justify">
               Fuente, situación o acto con un  potencial de causar daño en la salud  de trabajadores, en los equipos o en  las instalaciones.
 	    <p class="text-slate-700"><strong><em>Ejemplo: Charco de agua en el piso.</em></strong></p>
             </p>
           </div>
 
           <div class="p-4 rounded-lg bg-rose-50 border border-rose-200">
-            <h4 class="font-bold text-rose-900 flex items-center">
+            <h4 class="font-bold text-xl text-rose-900 flex items-center">
               <i class="fa-solid fa-user-injured mr-2"></i> Acto inseguro
             </h4>
-            <p class="text-sm text-slate-700 mt-1 text-justify">
+            <p class="text-base text-slate-700 mt-1 text-justify">
               Se reﬁere a todas las acciones y decisiones humanas, que pueden causar una situación  insegura o incidente, con consecuencias para el trabajador, la producción, el medio ambiente y otras personas. Incluye la falta de acciones para informar o corregir condiciones inseguras.
 	      Decreto 1072 de 2015 Articulo 2.2.4.6.2.
 	    <p class="text-slate-700"><strong><em>Ejemplo: Caminar rápido pendiente del celular.</em></strong></p>
@@ -250,40 +271,40 @@
           </div>
 
         <div class="p-4 rounded-lg bg-orange-50 border border-orange-200">
-            <h4 class="font-bold text-orange-900 flex items-center">
+            <h4 class="font-bold text-xl text-orange-900 flex items-center">
               <i class="fa-solid fa-user-injured mr-2"></i> Incidente de Trabajo
             </h4>
-            <p class="text-sm text-slate-700 mt-1 text-justify">
+            <p class="text-base text-slate-700 mt-1 text-justify">
               Es todo suceso acaecido en el curso del trabajo o en relación con este, que tuvo el potencial de ser un accidente, en el que hubo personas involucradas sin que sufrieran lesiones o se presentaran daños a la propiedad y/o perdidas en los procesos. (casi accidente)
 	    <p class="text-slate-700"><strong><em>Ejemplo: El trabajador se resbala, pero no cae al piso.</em></strong></p>
             </p>
           </div>
 
           <div class="p-4 rounded-lg bg-rose-50 border border-rose-200">
-            <h4 class="font-bold text-rose-900 flex items-center">
+            <h4 class="font-bold text-xl text-rose-900 flex items-center">
             <i class="fa-solid fa-user-injured mr-2"></i> Accidente de Trabajo (AT)
             </h4>
-            <p class="text-sm text-slate-700 mt-1 text-justify">
+            <p class="text-base text-slate-700 mt-1 text-justify">
               Es todo suceso repentino que sobrevenga por causa o con ocasión del trabajo y que produzca en el trabajador una perturbación funcional o psiquiátrica, la invalidez o la muerte. (Ley 1562/2012 Artículo 3).
 	    <p class="text-slate-700"><strong><em>Ejemplo: El trabajador se resbala, cae al piso, se golpea y tiene una lesión (fractura o esguince).</em></strong></p>
             </p>
           </div>
 
           <div class="p-4 rounded-lg bg-orange-50 border border-orange-200">
-            <h4 class="font-bold text-orange-900 flex items-center">
+            <h4 class="font-bold text-xl text-orange-900 flex items-center">
             <i class="fa-solid fa-user-injured mr-2"></i> Siniestro vial
             </h4>
-            <p class="text-sm text-slate-700 mt-1 text-justify">
+            <p class="text-base text-slate-700 mt-1 text-justify">
               Evento generalmente involuntario, generado al menos por un vehículo en movimiento, que causa daños a personas y bienes involucrados en él, e igualmente afecta la normal circulación de los vehículos que se movilizan por la vía o vías comprendidas en el lugar o dentro de la zona de influencia del hecho.
 	    <p class="text-slate-700"><strong><em>Ejemplo: Colisión entre vehículos.</em></strong></p>
             </p>
           </div>
 
           <div class="p-4 rounded-lg bg-rose-50 border border-rose-200">
-            <h4 class="font-bold text-rose-900 flex items-center">
+            <h4 class="font-bold text-xl text-rose-900 flex items-center">
               <i class="fa-solid fa-circle-radiation mr-2"></i> Enfermedad laboral (EL)
             </h4>
-            <p class="text-sm text-slate-700 mt-1 text-justify">
+            <p class="text-base text-slate-700 mt-1 text-justify">
               La contraída como resultado de la exposición a factores de riesgo inherentes a la actividad laboral o del medio en el que el trabajador se ha visto obligado a laborar.
 	    <p class="text-slate-700"><strong><em>Ejemplo: Hipoacusia inducida por ruido.</em></strong></p>
             </p>
@@ -350,15 +371,15 @@
     <div class="grid sm:grid-cols-2 gap-4">
       <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 flex space-x-3">
         <span class="w-8 h-8 rounded-full bg-[#172139] text-white flex items-center justify-center font-bold text-sm shrink-0">9</span>
-        <p class="text-sm text-justify text-slate-700">Afiliarse a una única Administradora de Riesgos Laborales (ARL) y asumir el pago de esta si la actividad está clasificada en Riesgo I, II o III.</p>
+        <p class="text-base text-justify text-slate-700">Afiliarse a una única Administradora de Riesgos Laborales (ARL) y asumir el pago de esta si la actividad está clasificada en Riesgo I, II o III.</p>
       </div>
       <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 flex space-x-3">
         <span class="w-8 h-8 rounded-full bg-[#172139] text-white flex items-center justify-center font-bold text-sm shrink-0">10</span>
-        <p class="text-sm text-justify text-slate-700">Realizar los aportes a seguridad social durante toda la vigencia del contrato.</p>
+        <p class="text-base text-justify text-slate-700">Realizar los aportes a seguridad social durante toda la vigencia del contrato.</p>
       </div>
       <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 flex space-x-3">
         <span class="w-8 h-8 rounded-full bg-[#172139] text-white flex items-center justify-center font-bold text-sm shrink-0">11</span>
-        <p class="text-sm text-justify text-slate-700">Contar con los elementos de protección personal (EPP) y demás elementos necesarios para realizar de manera segura las actividades contratadas, asumiendo el costo de estos.</p>
+        <p class="text-base text-justify text-slate-700">Contar con los elementos de protección personal (EPP) y demás elementos necesarios para realizar de manera segura las actividades contratadas, asumiendo el costo de estos.</p>
       </div>
     </div>
   </div>
@@ -766,23 +787,23 @@ alt="Descripción de la imagen" alt="Imagen centrada" style="max-width: 15%;">
             <li>Reporte de manera inmediata todos los accidentes e incidentes de trabajo.</li>
             <li>Conozca e identifique las rutas de evacuación y puntos de encuentro del lugar donde se encuentra. Mantente atento a las condiciones del entorno.</li>
             <li>Mantenga libre de obstáculos los equipos y elementos para atención de emergencias.</li>
-            <li>Respeta las demarcaciones de elementos para la atencion de emergencias: <strong>camillas, gabinetes contra incendio, extintores.</strong></li>
+            <li>Respeta las demarcaciones de elementos para la atencion de emergencias: <strong>Camillas, gabinetes contra incendio, extintores.</strong></li>
           </ul>
         </div>
 
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
           <h3 class="font-bold text-xl text-slate-900 border-b pb-2 mb-3"><i class="fa-solid fa-user-graduate text-[#00AEAC] mr-2"></i> Recomendaciones para Docentes</h3>
           <ul class="text-base text-justify text-slate-700 space-y-2 list-disc pl-4">
-            <li><strong>Evita gritar o hablar por encima de sus posibilidades</strong>: su resistencia depende de sus características personales y de su entrenamiento vocal..</li>
-            <li><strong>Respire por la nariz</strong>: respirar por la boca favorece la entrada de aire frío y de bacterias.</li>
-            <li><strong>Utilice la regla 60 / 10</strong>: por 60 minutos de charla, 10 minutos de silencio.</li>
-            <li><strong>Mantenga una postura corporal correcta</strong>: espalda, hombros y caderas alineados, para ampliﬁcar su voz y no forzar su garganta.</li>
-            <li><strong>Tome agua con frecuencia</strong>: le ayudará a mantener las cuerdas vocales hidratadas. Beba al menos 1,5 litros diarios.</li>
+            <li><strong>Evita gritar o hablar por encima de sus posibilidades</strong>: Su resistencia depende de sus características personales y de su entrenamiento vocal..</li>
+            <li><strong>Respire por la nariz</strong>: Respirar por la boca favorece la entrada de aire frío y de bacterias.</li>
+            <li><strong>Utilice la regla 60 / 10</strong>: Por 60 minutos de charla, 10 minutos de silencio.</li>
+            <li><strong>Mantenga una postura corporal correcta</strong>: Espalda, hombros y caderas alineados, para ampliﬁcar su voz y no forzar su garganta.</li>
+            <li><strong>Tome agua con frecuencia</strong>: Le ayudará a mantener las cuerdas vocales hidratadas. Beba al menos 1,5 litros diarios.</li>
             <li>Aproveche la masticación para relajar los movimientos articulatorios.</li>
             <li>Manténgase hidratado y coma al menos 5 frutas y verduras al día; disminuya el consumo de grasa, esta genera sequedad en la  boca.</li>
-            <li><strong>Evite fumar</strong>: el tabaco reseca la mucosa de la laringe.</li>
-            <li><strong>Acuda al otorrinolaringólogo</strong>: si presenta molestias o alteraciones de la voz por más de 15 días.</li>
-            <li><strong>Duerma de siete a ocho horas diarias</strong>: el descanso nocturno favorece el reposo vocal.</li>
+            <li><strong>Evite fumar</strong>: El tabaco reseca la mucosa de la laringe.</li>
+            <li><strong>Acuda al otorrinolaringólogo</strong>: Si presenta molestias o alteraciones de la voz por más de 15 días.</li>
+            <li><strong>Duerma de siete a ocho horas diarias</strong>: El descanso nocturno favorece el reposo vocal.</li>
           </ul>
         </div>
 
@@ -792,7 +813,7 @@ alt="Descripción de la imagen" alt="Imagen centrada" style="max-width: 15%;">
             <li><strong>Gradúa la altura de la silla</strong>: Debes ajustar la silla, de tal forma que los codos y antebrazos queden apoyados en el escritorio y formen un ángulo de 90º.</li>
             <li><strong>Verifica la posición de tus piernas</strong>: Tus pies deben quedar apoyados firmemente sobre el suelo y las rodillas deben formar un ángulo de 90º; de no ser así, utiliza la ayuda de un reposapiés</li>
             <li><strong>Uso de la pantalla</strong>: El borde superior de la pantalla debe estar frente a ti y formar una línea directa con el vértice de tus ojos.</li>
-            <li><strong>Distancia de la pantalla</strong>:Comprueba que la distancia de la pantalla con relación a tu cuerpo este entre los 45 cm y los 70 cm de distancia.</li>
+            <li><strong>Distancia de la pantalla</strong>: Comprueba que la distancia de la pantalla con relación a tu cuerpo este entre los 45 cm y los 70 cm de distancia.</li>
             <li><strong>Verifica que el teclado y el mouse estén alineados horizontalmente y sobre el plano de trabajo</strong>: Ubica las manos sobre el teclado y toma distancia, estirando completamente los brazos al frente; la pantalla debe quedar ubicada detrás de tus dedos.</li>
             <li><strong>Realiza regularmente pausas activas</strong>: En un lapso de 5 a 10 minutos realiza una práctica de ejercicios suaves y controlados, con el objetivo de realizar una prevención primaria. Ayuda a reducir la fatiga laboral, el estrés y prevenir desórdenes musculoesqueléticos.</li></ul>
         </div>
@@ -801,7 +822,7 @@ alt="Descripción de la imagen" alt="Imagen centrada" style="max-width: 15%;">
           <h3 class="font-bold text-xl text-slate-900 border-b pb-2 mb-3"><i class="fa-solid fa-car-side text-[#00AEAC] mr-2"></i> Actividades fuera del Campus - Desplazamientos terrestres</h3>
           <ul class="text-base text-justify text-slate-700 space-y-2 list-disc pl-4">
               <li>Utilizar el medio de transporte indicado por la Institución, conforme a lo establecido por el Plan Estrategico de Seguridad Vial - PESV</li>
-            <li>Llevar consigo documentos de identiﬁcación tales como: <strong>cédula, carnet de la EPS, carnet institucional, entre otros</strong>.</li>
+            <li>Llevar consigo documentos de identiﬁcación tales como: <strong>Cédula, carnet de la EPS, carnet institucional, entre otros</strong>.</li>
             <li>No portar ni consumir licor y/o sustancias psicoactivas durante la salida de campo, ni en el desarrollo de sus actividades.</li>
             <li>Cumplir con las actividades contractuales.</li>
             <li>Tener claridad del procedimiento de reporte de incidentes y accidentes. Tenga el telefono de la ARL a la mano.</li>
@@ -818,7 +839,7 @@ alt="Descripción de la imagen" alt="Imagen centrada" style="max-width: 15%;">
     <section id="mod-10" class="module-content hidden space-y-6">
       <div class="border-b-2 border-custom-title pb-3">
         <h2 class="text-2xl font-bold text-custom-title">Módulo 10: Evaluación de Inducción sobre riesgos y peligros previo al ingreso</h2>
-        <p class="text-slate-600">Diligencie sus datos y responda las 5 preguntas del banco aleatorio para obtener su comprobante.</p>
+        <p class="text-slate-600">Diligencie sus datos y responda las 5 preguntas para obtener su <strong>comprobante de su participación</strong> y adjuntelo en el <strong>link del formulario "Evidencia - Inducción sobre riesgos y peligros previo al ingreso (SG-SST)"</strong> y <strong>cárguelo en la plataforma en la cual está realizando su proceso de contratación.</strong></p>
       </div>
 
       <div id="user-info-step" class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 max-w-xl mx-auto space-y-4">
